@@ -1,0 +1,19 @@
+name: test
+
+on: ['push', 'pull_request']
+
+jobs:
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+      - uses: dschep/install-poetry-action@v1.3
+      - name: Install dependencies
+        run: poetry install
+      - name: pytest
+        run: |
+          cd tests
+          pytest

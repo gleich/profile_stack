@@ -13,5 +13,13 @@ inputs:
     description: 'File path for the config file'
   badges:
     required: false
-    default: yes
+    default: true
     description: 'Badges or plain text in the table'
+  technology_emoji:
+    required: false
+    default: '💻'
+    description: 'The emoji for the technology column'
+  project_emoji:
+    required: false
+    default: '🚀'
+    description: 'The emoji for the projects column'
