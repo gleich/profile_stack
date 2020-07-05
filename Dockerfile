@@ -7,4 +7,4 @@ RUN pip3 install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-root --no-dev -n
 
-CMD [ "python3", "profile_stack/main.py" ]
+CMD [ "python3", "/app/profile_stack/main.py" ]
