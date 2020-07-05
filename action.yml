@@ -1,5 +1,5 @@
 name: 'profile_stack'
-description: '🚀 Display your tech stack on your GitHub profile's README'
+description: "🚀 Display your tech stack on your GitHub profile's README"
 branding:
   icon: 'user'
   color: 'green'
@@ -15,4 +15,3 @@ inputs:
     required: false
     default: yes
     description: 'Badges or plain text in the table'
-
