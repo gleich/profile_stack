@@ -1,5 +1,10 @@
+import os
+import subprocess
+
+
 def main():
-    print('Hello World')
+    os.chdir('/')
+    print(subprocess.check_output(['ls']))
 
 
 if __name__ == "__main__":
