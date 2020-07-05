@@ -1,10 +1,8 @@
-import os
-import subprocess
+import config
 
 
 def main():
-    os.chdir('/')
-    print(subprocess.check_output(['ls']))
+    config.load_config()
 
 
 if __name__ == "__main__":
