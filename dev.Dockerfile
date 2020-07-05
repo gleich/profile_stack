@@ -8,4 +8,4 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --no-root -n
 
 WORKDIR /app/tests
-CMD [ "pytest" ]
+CMD [ "pytest", "-v" ]
