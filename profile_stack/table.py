@@ -1,5 +1,5 @@
 import os
-import url
+import badge
 
 
 def generate_table(config):
@@ -10,4 +10,7 @@ def generate_table(config):
         '|-|-|'
     ]
     for technology in config:
-        technology_url = url.technology(technology)
+        technology_badge = badge.technology(technology)
+        project_badges = []
+        for project_url in technology['projects']:
+            project_badges.append(badge.project(project_url))
