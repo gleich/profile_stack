@@ -1,0 +1,15 @@
+name: 'profile_stack'
+description: '🚀 Display your tech stack on your GitHub profile's README'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+inputs:
+  path:
+    required: false
+    default: 'stack.yml'
+    description: 'File path for the config file'
+  badges:
+    required: false
+    default: yes
+    description: 'Badges or plain text in the table'
+
