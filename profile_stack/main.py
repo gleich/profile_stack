@@ -11,7 +11,7 @@ def main():
     table_lines = table.generate_table(config_contents)
     with open('README.md') as readme_file:
         readme_orig_lines = readme_file.readlines()
-    if '<!-- START OF PROFILE STACK, DO NOT REMOVE -->' not in readme_orig_lines:
+    if '<!-- START OF PROFILE STACK, DO NOT REMOVE -->\n' not in readme_orig_lines:
         with open('README.md', 'a') as readme_file:
             readme_file.write(
                 '\n<!-- START OF PROFILE STACK, DO NOT REMOVE -->\n')
