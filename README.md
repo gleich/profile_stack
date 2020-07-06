@@ -1,4 +1,4 @@
-# profile_stack
+# profile_stack ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/profile_stack)
 
 ![test](https://github.com/Matt-Gleich/profile_stack/workflows/test/badge.svg)
 ![build](https://github.com/Matt-Gleich/profile_stack/workflows/build/badge.svg)
@@ -22,22 +22,22 @@ jobs:
       - uses: Matt-Gleich/profile_stack@master
 ```
 
-Based off your config file (see below) this GitHub action will generate a table showing technologies you use and projects you wanna showoff with them:
+Based off your config file (see below) this GitHub action will generate a table showing technologies and projects you've used them in (doesn't have to be all, pick any):
 
 | 💻 Technology                                                                                                                         | 🚀 Projects                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [![Dart](https://img.shields.io/static/v1?label=&message=Dart&color=52C0F2&logo=dart&logoColor=white)](https://dart.dev/)             | [![import_sorter](https://img.shields.io/static/v1?label=import_sorter&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/fluttercommunity/import_sorter) [![Personal-Site](https://img.shields.io/static/v1?label=Personal-Site&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/Matt-Gleich/Personal-Site) [![auralite-mobile](https://img.shields.io/static/v1?label=auralite-mobile&message=%20&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/auralite-mobile) |
 | [![Flutter](https://img.shields.io/static/v1?label=&message=Flutter&color=52C0F2&logo=flutter&logoColor=white)](https://flutter.dev/) | [![Personal-Site](https://img.shields.io/static/v1?label=Personal-Site&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/Matt-Gleich/Personal-Site) [![auralite-mobile](https://img.shields.io/static/v1?label=auralite-mobile&message=%20&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/auralite-mobile)                                                                                                                                                                                                    |
 
-You can even see a live example at my repo: [Matt-Gleich](https://github.com/Matt-Gleich/Matt-Gleich)
+A live example at my repo: [github.com/Matt-Gleich/Matt-Gleich](https://github.com/Matt-Gleich/Matt-Gleich)
 
 ## ⚙️ Config
 
-Configuration for the profile stack. Located by default at `stack.yml` at the root of your repository.
+Configuration for the profile stack. Located by default in `stack.yml` at the root of your repository.
 
 Here is an example config:
 
-```yaml
+```yml
 - name: Dart
   logo: dart
   url: https://dart.dev/
@@ -101,4 +101,9 @@ You can also configure the following when declaring your action:
 
 ## 💻 Contributing
 
-We would love to have your contribution! Just make sure isn't an already open PR or issue. When contributing use the `dev.Dockerfile` for testing so you don't change any virtual environments.
+We would love to have your contribution! Just make sure isn't an already open or closed PR or issue. When contributing use the `dev.Dockerfile` for testing so you don't change any environment variables.
+
+Thank you to our current contributors:
+
+- Matthew Gleich ([@Matt-Gleich](https://github.com/Matt-Gleich))
+- Caleb Denio ([@cjdenio](https://github.com/cjdenio))
