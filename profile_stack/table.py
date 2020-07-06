@@ -1,5 +1,6 @@
 import os
 import badge
+from loguru import logger
 
 
 def generate_table(config):
@@ -24,4 +25,5 @@ def generate_table(config):
             project_badges.append(badge.project(project_url))
         combined_project_badges = ' '.join(project_badges)
         rows.append(f'| {technology_badge} | {combined_project_badges} |')
+    logger.success('Generated table')
     return '\n'.join(rows)
