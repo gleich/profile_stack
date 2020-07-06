@@ -4,3 +4,99 @@
 ![build](https://github.com/Matt-Gleich/profile_stack/workflows/build/badge.svg)
 
 🚀 Display your tech stack on your GitHub profile's README
+
+## ✨ Example
+
+Add the following to a file in `.github/workflows`:
+
+```yml
+name: Profile Stack
+
+on: [push]
+
+jobs:
+  profile_stack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Matt-Gleich/profile_stack@master
+```
+
+Based off your config file (see below) this GitHub action will generate a table showing technologies you use and projects you wanna showoff with them:
+
+| 💻 Technology                                                                                                                         | 🚀 Project                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [![Dart](https://img.shields.io/static/v1?label=&message=Dart&color=52C0F2&logo=dart&logoColor=white)](https://dart.dev/)             | [![import_sorter](https://img.shields.io/static/v1?label=import_sorter&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/fluttercommunity/import_sorter) [![Personal-Site](https://img.shields.io/static/v1?label=Personal-Site&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/Matt-Gleich/Personal-Site) [![auralite-mobile](https://img.shields.io/static/v1?label=auralite-mobile&message=%20&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/auralite-mobile) |
+| [![Flutter](https://img.shields.io/static/v1?label=&message=Flutter&color=52C0F2&logo=flutter&logoColor=white)](https://flutter.dev/) | [![Personal-Site](https://img.shields.io/static/v1?label=Personal-Site&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/Matt-Gleich/Personal-Site) [![auralite-mobile](https://img.shields.io/static/v1?label=auralite-mobile&message=%20&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/auralite-mobile)                                                                                                                                                                                                    |
+
+## ⚙️ Config
+
+Configuration for the profile stack. Located by default at `stack.yml` at the root of your repository.
+
+Here is an example config:
+
+```yaml
+- name: Dart
+  logo: dart
+  url: https://dart.dev/
+  color: 52C0F2
+  logoColor: FFFFFF
+  projects:
+    - https://github.com/fluttercommunity/import_sorter
+    - https://github.com/Matt-Gleich/Personal-Site
+    - https://github.com/Matt-Gleich/auralite-mobile
+- name: Flutter
+  logo: flutter
+  url: https://flutter.dev/
+  color: 52C0F2
+  logoColor: FFFFFF
+  projects:
+    - https://github.com/Matt-Gleich/Personal-Site
+    - https://github.com/Matt-Gleich/auralite-mobile
+```
+
+So for each technology there are the following fields you need to fill in:
+
+| **Key**   | **Example Value**                                                                                    | **Description**                                                     |
+| --------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| name      | Dart                                                                                                 | Name of the technology                                              |
+| logo      | dart                                                                                                 | Logo for the technology ([list of logos](https://simpleicons.org/)) |
+| url       | https://flutter.dev/                                                                                 | URL for the technology                                              |
+| logoColor | FFFFFF                                                                                               | Hex color code for the logo color                                   |
+| color     | 52C0F2                                                                                               | Hex color code for the background color                             |
+| projects  | - https://github.com/Matt-Gleich/Personal-Site <br> - https://github.com/Matt-Gleich/auralite-mobile | YAML list of GitHub project URLs                                    |
+
+### 🦎 Action Configuration
+
+Here is an example config:
+
+```yaml
+name: Profile Stack
+
+on: [push]
+
+jobs:
+  profile_stack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: Matt-Gleich/profile_stack@master
+        with:
+          path: config/stack.yml
+          badges: false
+          technology_emoji: 👨🏻‍💻
+          project_emoji: ✨
+```
+
+You can also configure the following when declaring your action:
+
+| **Key**          | **Example Value** | **Description**                                               |
+| ---------------- | ----------------- | ------------------------------------------------------------- |
+| path             | config/stack.yml  | The path in your repository where the config file is located  |
+| badges           | false             | Don't have badges, just plain old urls                        |
+| technology_emoji | 👨🏻‍💻                | The emoji to be displayed to the left of the Technology title |
+| project_emoji    | ✨                | The emoji to be displayed to the left of the Project title    |
+
+## 💻 Contributing
+
+We would love to have your contribution! Just make sure isn't an already open PR or issue. When contributing use the `dev.Dockerfile` for testing so you don't change any virtual environments.
