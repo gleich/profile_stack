@@ -1,5 +1,6 @@
 import config
 import table
+import os
 from loguru import logger
 
 
@@ -31,6 +32,10 @@ def main():
                     readme_file.writelines(table_lines)
                     write_line = False
                 logger.success('Wrote table to README.md file')
+    os.system('git add .')
+    os.system('git commit -m "Update profile stack"')
+    os.system('git push')
+    logger.success('Pushed changes!')
 
 
 if __name__ == "__main__":
