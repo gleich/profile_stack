@@ -15,7 +15,7 @@ def generate_table(config):
     technology_emoji = os.getenv('INPUT_TECHNOLOGY_EMOJI')
     projects_emoji = os.getenv('INPUT_PROJECT_EMOJI')
     rows = [
-        f'| {technology_emoji} Technology | {projects_emoji} Project |',
+        f'| {technology_emoji} **Technology** | {projects_emoji} **Project** |',
         '|-|-|'
     ]
     for technology in config:
