@@ -29,6 +29,8 @@ Based off your config file (see below) this GitHub action will generate a table 
 | [![Dart](https://img.shields.io/static/v1?label=&message=Dart&color=52C0F2&logo=dart&logoColor=white)](https://dart.dev/)             | [![import_sorter](https://img.shields.io/static/v1?label=import_sorter&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/fluttercommunity/import_sorter) [![Personal-Site](https://img.shields.io/static/v1?label=Personal-Site&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/Matt-Gleich/Personal-Site) [![auralite-mobile](https://img.shields.io/static/v1?label=auralite-mobile&message=%20&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/auralite-mobile) |
 | [![Flutter](https://img.shields.io/static/v1?label=&message=Flutter&color=52C0F2&logo=flutter&logoColor=white)](https://flutter.dev/) | [![Personal-Site](https://img.shields.io/static/v1?label=Personal-Site&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/Matt-Gleich/Personal-Site) [![auralite-mobile](https://img.shields.io/static/v1?label=auralite-mobile&message=%20&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/auralite-mobile)                                                                                                                                                                                                    |
 
+You can even see a live example at my repo: [Matt-Gleich](https://github.com/Matt-Gleich/Matt-Gleich)
+
 ## ⚙️ Config
 
 Configuration for the profile stack. Located by default at `stack.yml` at the root of your repository.
