@@ -72,7 +72,7 @@ So for each technology there are the following fields you need to fill in:
 
 ### Project object
 
-You can optionally pass a YAML object to the `projects` field.
+You can optionally pass a list of YAML objects to the `projects` field.
 | **Key** | **Example Value** | **Description** |
 | - | - | - |
 | `url` | https://github.com/Matt-Gleich/Personal-Site | URL to a GitHub project |
