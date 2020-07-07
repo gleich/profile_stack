@@ -28,7 +28,6 @@ def test_project():
     os.environ['INPUT_BADGES'] = 'true'
     badged_result = badge.project(project_url)
     wip_badged_result = badge.project(project_url)
-    print(wip_badged_result)
     assert badged_result == '[![import_sorter](https://img.shields.io/static/v1?label=import_sorter&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/fluttercommunity/import_sorter)'
 
     os.environ['INPUT_BADGES'] = 'false'

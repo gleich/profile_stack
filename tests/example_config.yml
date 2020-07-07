@@ -15,4 +15,5 @@
   logoColor: white
   projects:
     - https://github.com/Matt-Gleich/Personal-Site
-    - https://github.com/Matt-Gleich/auralite-mobile
+    - url: https://github.com/Matt-Gleich/auralite-mobile
+      wip: true
