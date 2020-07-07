@@ -6,7 +6,8 @@
   projects:
     - https://github.com/fluttercommunity/import_sorter
     - https://github.com/Matt-Gleich/Personal-Site
-    - https://github.com/Matt-Gleich/auralite-mobile
+    - url: https://github.com/Matt-Gleich/auralite-mobile
+      wip: true
 - name: Flutter
   logo: flutter
   url: https://flutter.dev/
