@@ -54,7 +54,8 @@ Here is an example config:
   logoColor: FFFFFF
   projects:
     - https://github.com/Matt-Gleich/Personal-Site
-    - https://github.com/Matt-Gleich/auralite-mobile
+    - url: https://github.com/Matt-Gleich/auralite-mobile
+      wip: true
 ```
 
 So for each technology there are the following fields you need to fill in:

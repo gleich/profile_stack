@@ -21,8 +21,15 @@ def generate_table(config):
     for technology in config:
         technology_badge = badge.technology(technology)
         project_badges = []
-        for project_url in technology['projects']:
-            project_badges.append(badge.project(project_url))
+        for project in technology['projects']:
+            if type(project) is dict:
+                project_url = project["url"]
+                project_wip = project.get("wip", False)
+            elif type(project) is str:
+                project_url = project
+                project_wip = False
+
+            project_badges.append(badge.project(project_url, project_wip))
         combined_project_badges = ' '.join(project_badges)
         rows.append(f'| {technology_badge} | {combined_project_badges} |')
     logger.success('Generated table')
