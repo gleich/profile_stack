@@ -28,7 +28,7 @@ def main():
         with open('README.md', 'a') as readme_file:
             write_line = True
             for line in readme_orig_lines:
-                if line == '<!-- END OF PROFILE STACK, DO NOT REMOVE -->\n':
+                if line == '<!-- END OF PROFILE STACK, DO NOT REMOVE -->\n' or line == '<!-- END OF PROFILE STACK, DO NOT REMOVE -->':
                     readme_file.write('\n<!-- END OF PROFILE STACK, DO NOT REMOVE')
                     write_line = True
                 if write_line:
