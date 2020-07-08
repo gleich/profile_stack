@@ -16,7 +16,10 @@ def main():
             readme_file.write(
                 '\n<!-- START OF PROFILE STACK, DO NOT REMOVE -->\n')
             for table_line in table_lines:
-                readme_file.write(table_line + '\n')
+                if table_line == '\n':
+                    readme_file.write(table_line)
+                else:
+                    readme_file.write(table_line + '\n')
             readme_file.write('<!-- END OF PROFILE STACK, DO NOT REMOVE -->\n')
             logger.success('Wrote table to README.md file')
     else:
@@ -25,10 +28,14 @@ def main():
         with open('README.md', 'a') as readme_file:
             write_line = True
             for line in readme_orig_lines:
-                if line == '\n<!-- END OF PROFILE STACK, DO NOT REMOVE -->\n':
+                if line == '<!-- END OF PROFILE STACK, DO NOT REMOVE -->\n':
+                    readme_file.write('\n<!-- END OF PROFILE STACK, DO NOT REMOVE')
                     write_line = True
                 if write_line:
-                    readme_file.write(line + '\n')
+                    if table_line == '\n':
+                        readme_file.write(table_line)
+                    else:
+                        readme_file.write(table_line + '\n')
                 if line == '<!-- START OF PROFILE STACK, DO NOT REMOVE -->\n':
                     for table_line in table_lines:
                         readme_file.write(table_line + '\n')
