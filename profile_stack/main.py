@@ -16,7 +16,7 @@ def main():
             readme_file.write(
                 '\n<!-- START OF PROFILE STACK, DO NOT REMOVE -->\n')
             for table_line in table_lines:
-                if table_line == '\n':
+                if table_line == '\n' or table_line.strip() == '':
                     readme_file.write(table_line)
                 else:
                     readme_file.write(table_line + '\n')
@@ -32,7 +32,7 @@ def main():
                     readme_file.write('\n<!-- END OF PROFILE STACK, DO NOT REMOVE')
                     write_line = True
                 if write_line:
-                    if line == '\n':
+                    if line == '\n' or line.strip() == '':
                         readme_file.write(line)
                     else:
                         readme_file.write(line + '\n')
