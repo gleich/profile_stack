@@ -17,3 +17,11 @@ jobs:
         run: |
           cd tests
           pytest -vv
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build docker image
+        run: docker build . -f dev.Dockerfile -t mattgleich/profile_stack_dev
+      - name: Running docker image
+        run: docker run mattgleich/profile_stack_dev
