@@ -12,7 +12,10 @@ Add the following to a file in `.github/workflows`:
 ```yml
 name: Profile Stack
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   profile_stack:
