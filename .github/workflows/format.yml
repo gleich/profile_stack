@@ -1,0 +1,19 @@
+name: format
+
+on:
+  - push
+  - pull_request
+  - release
+
+jobs:
+  autopep8:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+      - uses: dschep/install-poetry-action@v1.3
+      - name: Install dependencies
+        run: poetry install
+      - run: autopep8 --aggressive --exit-code --recursive --diff .
