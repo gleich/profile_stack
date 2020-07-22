@@ -13,7 +13,7 @@ def technology(config):
         str: The badge
     """
     if eval(os.getenv('INPUT_BADGES').title()):
-        return '[![{name}](https://img.shields.io/static/v1?label=&message={name}&color={color}&logo={logo}&logoColor={logoColor})]({url})'.format(
+        return '[![{name}](https://img.shields.io/static/v1?message={name}&color={color}&logo={logo}&logoColor={logoColor})]({url})'.format(
             name=config['name'],
             color=config['color'],
             logo=config['logo'],
@@ -34,7 +34,7 @@ def project(url, wip=False):
     """
     repo_name = url.split('/')[-1]
     if eval(os.getenv('INPUT_BADGES').title()):
-        return f'[![{repo_name}](https://img.shields.io/static/v1?label={repo_name}{urllib.parse.quote(" (WIP)") if wip else ""}&message=%20&color=000605&logo=github&logoColor=white&labelColor=000605)]({url})'
+        return f'[![{repo_name}](https://img.shields.io/static/v1?message={repo_name}{urllib.parse.quote(" (WIP)") if wip else ""}&color=000605&logo=github&logoColor=white&labelColor=000605)]({url})'
     return '[{name}]({url})'.format(
         name=repo_name,
         url=url,
