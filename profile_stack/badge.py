@@ -2,6 +2,7 @@ import os
 import distutils
 import urllib.parse
 
+
 def technology(config):
     """Generate a badge for the given technology
 

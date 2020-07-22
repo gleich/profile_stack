@@ -22,10 +22,10 @@ def generate_table(config):
         technology_badge = badge.technology(technology)
         project_badges = []
         for project in technology['projects']:
-            if type(project) is dict:
+            if isinstance(project, dict):
                 project_url = project["url"]
                 project_wip = project.get("wip", False)
-            elif type(project) is str:
+            elif isinstance(project, str):
                 project_url = project
                 project_wip = False
 
