@@ -1,7 +1,8 @@
-import config
-import table
 import os
 from loguru import logger
+import config
+import table
+import commands
 
 
 def main():
@@ -42,12 +43,17 @@ def main():
                         readme_file.write(line)
                     else:
                         readme_file.write(line + '\n')
-    os.system('git config --global user.email "action@github.com"')
-    os.system('git config --global user.name "Publishing Bot"')
-    os.system('git add .')
-    os.system('git commit -m "Update profile stack"')
-    os.system('git push')
-    logger.success('Pushed changes!')
+    commands.run_commands([
+        'git config --global user.email "action@github.com"',
+        'git config --global user.name "Publishing Bot"',
+        'git add .',
+        'git commit -m "Update profile stack"',
+        'git push'
+    ],
+        'Failed to push changes'
+    )
+
+    logger.success('⬆️ Pushed changes! ⬆️')
 
 
 if __name__ == "__main__":
