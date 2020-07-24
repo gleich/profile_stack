@@ -1,3 +1,4 @@
+<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "cjdenio"]:end -->
 # profile_stack ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/profile_stack)
 
 ![test](https://github.com/Matt-Gleich/profile_stack/workflows/test/badge.svg)
@@ -116,3 +117,13 @@ You can also configure the following when declaring your action:
 ## 💻 Contributing
 
 We would love to have your contribution! Just make sure isn't an already open or closed PR or issue. When contributing use the `dev.Dockerfile` for testing so you don't change any environment variables.
+
+<!-- DO NOT REMOVE - contributor_list:start -->
+## 👥 Contributors
+
+
+- **[@Matt-Gleich](https://github.com/Matt-Gleich)**
+
+- **[@cjdenio](https://github.com/cjdenio)**
+
+<!-- DO NOT REMOVE - contributor_list:end -->
