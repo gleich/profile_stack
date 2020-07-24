@@ -116,10 +116,3 @@ You can also configure the following when declaring your action:
 ## 💻 Contributing
 
 We would love to have your contribution! Just make sure isn't an already open or closed PR or issue. When contributing use the `dev.Dockerfile` for testing so you don't change any environment variables.
-
-Thank you to our current contributors:
-
-- Matthew Gleich ([@Matt-Gleich](https://github.com/Matt-Gleich))
-- Caleb Denio ([@cjdenio](https://github.com/cjdenio))
-
-[![import_sorter](https://img.shields.io/static/v1?message=import_sorter&color=000605&logo=github&logoColor=white&labelColor=000605)](https://github.com/fluttercommunity/import_sorter)
