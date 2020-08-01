@@ -11,6 +11,8 @@ def run_commands(commands, error_message):
     """
     for command in commands:
         exit_code = os.system(command)
+        print(f'COMMAND   = {command}')
+        print(f'EXIT_CODE = {exit_code}')
         if exit_code != 0:
             logger.error(error_message)
             exit(1)
