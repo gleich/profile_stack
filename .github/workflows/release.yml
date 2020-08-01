@@ -1,0 +1,21 @@
+name: release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  platform-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Docker Login
+        run: docker login docker.pkg.github.com --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Image
+        run: docker build -f platform.Dockerfile -t mattgleich/profile_stack .
+      - name: Push Image
+        run: docker push mattgleich/profile_stack

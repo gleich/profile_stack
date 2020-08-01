@@ -1,11 +1,3 @@
-FROM python:3.8
-
-COPY . /app
-WORKDIR /app
-
-# Installing dependencies:
-RUN pip3 install poetry
-RUN poetry config virtualenvs.create false
-RUN poetry install --no-root --no-dev -n
+FROM mattgleich/profile_stack
 
 CMD [ "python3", "/app/profile_stack/main.py" ]

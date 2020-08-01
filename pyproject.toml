@@ -6,7 +6,7 @@ authors = ["Matthew Gleich <matthewgleich@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = "^3.7"
 loguru = "^0.5.1"
 pyyaml = "^5.3.1"
 
