@@ -1,9 +1,11 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "cjdenio"]:end -->
-# profile_stack ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/profile_stack)
+
+# profile_stack ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/profile_stack) ![Docker Pulls](https://img.shields.io/docker/pulls/mattgleich/profile_stack)
 
 ![test](https://github.com/Matt-Gleich/profile_stack/workflows/test/badge.svg)
 ![build](https://github.com/Matt-Gleich/profile_stack/workflows/build/badge.svg)
 ![format](https://github.com/Matt-Gleich/profile_stack/workflows/format/badge.svg)
+![release](https://github.com/Matt-Gleich/profile_stack/workflows/release/badge.svg)
 
 🚀 Display your tech stack on your GitHub profile's README
 
@@ -119,8 +121,8 @@ You can also configure the following when declaring your action:
 We would love to have your contribution! Just make sure isn't an already open or closed PR or issue. When contributing use the `dev.Dockerfile` for testing so you don't change any environment variables.
 
 <!-- DO NOT REMOVE - contributor_list:start -->
-## 👥 Contributors
 
+## 👥 Contributors
 
 - **[@Matt-Gleich](https://github.com/Matt-Gleich)**
 
