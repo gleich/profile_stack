@@ -7,3 +7,7 @@ WORKDIR /app
 RUN pip3 install poetry
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-root --no-dev -n
+
+# Installing git
+RUN apt-get update
+RUN apt-get install git -yq
