@@ -4,13 +4,15 @@ COPY . /app
 WORKDIR /app
 
 # Installing dependencies:
-RUN pip3 install poetry
+RUN python -m pip install --upgrade pip
+RUN pip3 install poetry==1.0.10
 RUN poetry config virtualenvs.create false
 RUN poetry install --no-root -n
 
 # Installing git
-RUN apt-get update
-RUN apt-get install git -yq
+RUN apt-get update && apt-get install git=2.20.1 -y --no-install-recommends \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app/tests
 CMD [ "pytest", "-vv" ]
