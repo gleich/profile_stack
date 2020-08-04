@@ -12,16 +12,16 @@ def generate_table(config):
     Returns:
         list: All the lines for the table
     """
-    technology_emoji = os.getenv('INPUT_TECHNOLOGY_EMOJI')
-    projects_emoji = os.getenv('INPUT_PROJECT_EMOJI')
+    technology_emoji = os.getenv("INPUT_TECHNOLOGY_EMOJI")
+    projects_emoji = os.getenv("INPUT_PROJECT_EMOJI")
     rows = [
-        f'| {technology_emoji} **Technology** | {projects_emoji} **Projects** |',
-        '|-|-|'
+        f"| {technology_emoji} **Technology** | {projects_emoji} **Projects** |",
+        "|-|-|",
     ]
     for technology in config:
         technology_badge = badge.technology(technology)
         project_badges = []
-        for project in technology['projects']:
+        for project in technology["projects"]:
             if isinstance(project, dict):
                 project_url = project["url"]
                 project_wip = project.get("wip", False)
@@ -30,7 +30,7 @@ def generate_table(config):
                 project_wip = False
 
             project_badges.append(badge.project(project_url, project_wip))
-        combined_project_badges = ' '.join(project_badges)
-        rows.append(f'| {technology_badge} | {combined_project_badges} |')
-    logger.success('Generated table')
+        combined_project_badges = " ".join(project_badges)
+        rows.append(f"| {technology_badge} | {combined_project_badges} |")
+    logger.success("Generated table")
     return rows

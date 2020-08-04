@@ -6,7 +6,7 @@ on:
   - release
 
 jobs:
-  autopep8:
+  black:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,4 +16,4 @@ jobs:
       - uses: dschep/install-poetry-action@v1.3
       - name: Install dependencies
         run: poetry install
-      - run: autopep8 --aggressive --exit-code --recursive --diff .
+      - run: black --check --diff .

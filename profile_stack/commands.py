@@ -12,7 +12,7 @@ def run_commands(commands, error_message):
     for command in commands:
         exit_code = os.system(command)
         if exit_code == 256:
-            print('Stopped early')
+            print("Stopped early")
             exit(0)
         elif exit_code != 0:
             logger.error(error_message)

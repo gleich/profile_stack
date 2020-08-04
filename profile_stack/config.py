@@ -13,7 +13,7 @@ def load_config(dir_path):
         dictionary: The config file
     """
     os.chdir(dir_path)
-    with open(os.getenv('INPUT_PATH')) as config_file:
+    with open(os.getenv("INPUT_PATH")) as config_file:
         config = yaml.load(config_file, Loader=yaml.Loader)
-    logger.success('Loaded config file')
+    logger.success("Loaded config file")
     return config
