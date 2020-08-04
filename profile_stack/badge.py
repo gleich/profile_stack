@@ -12,12 +12,15 @@ def technology(config):
     Returns:
         str: The badge
     """
+    logo_color = 'white'
+    if 'logoColor' in config:
+        logo_color = config['logoColor'].strip('#')
     if eval(os.getenv('INPUT_BADGES').title()):
         return '[![{name}](https://img.shields.io/static/v1?label=&message={name}&color={color}&logo={logo}&logoColor={logoColor})]({url})'.format(
             name=config['name'],
             color=config['color'],
             logo=config['logo'],
-            logoColor=config['logoColor'],
+            logoColor=logo_color,
             url=config['url'],
         )
     return '[{name}]({url})'.format(name=config['name'], url=config['url'])

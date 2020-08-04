@@ -12,7 +12,6 @@
   logo: flutter
   url: https://flutter.dev/
   color: 52C0F2
-  logoColor: white
   projects:
     - https://github.com/Matt-Gleich/Personal-Site
     - url: https://github.com/Matt-Gleich/auralite-mobile

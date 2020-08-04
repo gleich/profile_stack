@@ -49,7 +49,6 @@ Here is an example config:
   logo: dart
   url: https://dart.dev/
   color: 52C0F2
-  logoColor: FFFFFF
   projects:
     - https://github.com/fluttercommunity/import_sorter
     - https://github.com/Matt-Gleich/Personal-Site
@@ -59,7 +58,6 @@ Here is an example config:
   logo: flutter
   url: https://flutter.dev/
   color: 52C0F2
-  logoColor: FFFFFF
   projects:
     - https://github.com/Matt-Gleich/Personal-Site
     - url: https://github.com/Matt-Gleich/auralite-mobile
@@ -68,14 +66,14 @@ Here is an example config:
 
 So for each technology there are the following fields you need to fill in:
 
-| **Key**     | **Example Value**                                                                                    | **Description**                                                     |
-| ----------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `name`      | Dart                                                                                                 | Name of the technology                                              |
-| `logo`      | dart                                                                                                 | Logo for the technology ([list of logos](https://simpleicons.org/)) |
-| `url`       | https://flutter.dev/                                                                                 | URL for the technology                                              |
-| `logoColor` | FFFFFF                                                                                               | Hex color code for the logo color                                   |
-| `color`     | 52C0F2                                                                                               | Hex color code for the background color                             |
-| `projects`  | - https://github.com/Matt-Gleich/Personal-Site <br> - https://github.com/Matt-Gleich/auralite-mobile | List of GitHub project URLs or [project objects](#project-object)   |
+| **Key**     | **Example Value**                                                                                    | **Description**                                                     | **Default** |
+| ----------- | ---------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ----------- |
+| `name`      | Dart                                                                                                 | Name of the technology                                              | Required    |
+| `logo`      | dart                                                                                                 | Logo for the technology ([list of logos](https://simpleicons.org/)) | Required    |
+| `url`       | https://flutter.dev/                                                                                 | URL for the technology                                              | Required    |
+| `logoColor` | FFFFFF                                                                                               | Hex color code for the logo color                                   | `white`     |
+| `color`     | 52C0F2                                                                                               | Hex color code for the background color                             | Required    |
+| `projects`  | - https://github.com/Matt-Gleich/Personal-Site <br> - https://github.com/Matt-Gleich/auralite-mobile | List of GitHub project URLs or [project objects](#project-object)   | Required    |
 
 ### Project object
 
