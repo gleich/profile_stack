@@ -10,6 +10,6 @@ RUN poetry config virtualenvs.create false
 RUN poetry install --no-root --no-dev -n
 
 # Installing git
-RUN apt-get update && apt-get install git=2.20.1 -y --no-install-recommends \
+RUN apt-get update && apt-get install git=1:2.20.1-2+deb10u3 -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
