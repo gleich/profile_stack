@@ -3,7 +3,6 @@ name: lint
 on:
   - push
   - pull_request
-  - release
 
 jobs:
   black:
@@ -28,3 +27,19 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - run: pylint --errors-only profile_stack tests
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: 'Dockerfile'
+      - name: dev.Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: 'dev.Dockerfile'
+      - name: platform.Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: 'platform.Dockerfile'
