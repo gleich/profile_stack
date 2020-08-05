@@ -1,4 +1,5 @@
 import os
+import sys
 from loguru import logger
 
 
@@ -13,7 +14,7 @@ def run_commands(commands, error_message):
         exit_code = os.system(command)
         if exit_code == 256:
             print("Stopped early")
-            exit(0)
+            sys.exit(0)
         elif exit_code != 0:
             logger.error(error_message)
-            exit(1)
+            sys.exit(1)

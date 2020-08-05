@@ -1,4 +1,4 @@
-name: format
+name: lint
 
 on:
   - push
@@ -17,3 +17,14 @@ jobs:
       - name: Install dependencies
         run: poetry install
       - run: black --check --diff .
+  pylint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-python@v1
+        with:
+          python-version: '3.8'
+      - uses: dschep/install-poetry-action@v1.3
+      - name: Install dependencies
+        run: poetry install
+      - run: pylint --errors-only profile_stack tests
