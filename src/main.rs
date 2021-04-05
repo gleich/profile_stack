@@ -1,3 +1,8 @@
+mod conf;
+
 fn main() {
-	println!("Hello, world!");
+	tracing_subscriber::fmt::init();
+
+	let env_vars = conf::Env::get().expect("Failed to get env var config");
+	println!("{:?}", env_vars);
 }
