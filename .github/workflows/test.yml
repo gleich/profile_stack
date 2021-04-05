@@ -1,0 +1,30 @@
+name: test
+
+on:
+  - push
+  - pull_request
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  rust:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            rust:
+              - '**.rs'
+              - 'Makefile.toml'
+              - 'Cargo.lock'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.rust == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.rust == 'true'
+        run: cargo make test-rust

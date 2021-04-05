@@ -1,0 +1,10 @@
+indent_style = "Block"
+reorder_imports = true
+imports_granularity = "Module"
+normalize_comments = true
+reorder_impl_items = true
+hard_tabs = true
+format_strings = true
+format_code_in_doc_comments = true
+force_multiline_blocks = true
+fn_single_line = true

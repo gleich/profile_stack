@@ -1,0 +1,53 @@
+name: lint
+
+on:
+  - push
+  - pull_request
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  rustfmt:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            rust:
+              - '**.rs'
+              - 'rustfmt.toml'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.rust == 'true'
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: nightly
+          components: rustfmt
+          override: true
+      - if: steps.changes.outputs.rust == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.rust == 'true'
+        run: cargo make lint-rust
+  hadolint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            docker:
+              - '**.Dockerfile'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.docker == 'true'
+        name: Linting prod.Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: 'docker/prod.Dockerfile'
+      - if: steps.changes.outputs.docker == 'true'
+        name: Linting dev.Dockerfile
+        uses: brpaz/hadolint-action@master
+        with:
+          dockerfile: 'docker/dev.Dockerfile'
