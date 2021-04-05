@@ -1,24 +1,22 @@
 commit_message: 'chore(syncing): sync files to latest version'
 replace:
-  - before: profile_stack
+  - before: project_name
     after: profile_stack
-  - before: 🚀 Display your tech stack on your GitHub profile's README
+  - before: project_description
     after: 🚀 Display your tech stack on your GitHub profile's README
-  - before: Matt-Gleich
+  - before: github_username
     after: Matt-Gleich
-  - before: email@mattglei.ch
+  - before: project_author_email
     after: email@mattglei.ch
-  - before: mattgleich
+  - before: docker_username
     after: mattgleich
-  - before: Matthew Gleich
+  - before: project_author_full_name
     after: Matthew Gleich
 files:
   - path: .gitignore
     source: https://github.com/Matt-Gleich/rust_template/blob/main/.gitignore
   - path: Makefile.toml
     source: https://github.com/Matt-Gleich/rust_template/blob/main/Makefile.toml
-  - path: rustfmt.toml
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/rustfmt.toml
   # Documentation
   - path: CONTRIBUTING.md
     source: https://github.com/Matt-Gleich/rust_template/blob/main/CONTRIBUTING.md
