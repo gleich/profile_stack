@@ -39,6 +39,38 @@ fn main() {
             .write_all(patched_content.as_bytes())
             .expect(&format!("Failed to write changes to {}", readme::FILE_NAME));
         info!("Wrote changes to {}", readme::FILE_NAME);
+
+        // Committing changes
+        let git_program = "git";
+        Command::new(git_program)
+            .arg("config")
+            .arg("--global")
+            .arg("user.name")
+            .arg("\"action&github.com\"")
+            .output()
+            .expect("Failed to set commit email");
+        Command::new(git_program)
+            .arg("config")
+            .arg("--global")
+            .arg("user.name")
+            .arg("\"Publishing Bot\"")
+            .output()
+            .expect("Failed to set commit email");
+        Command::new(git_program)
+            .arg("add")
+            .arg(readme::FILE_NAME)
+            .output()
+            .expect("Failed to stage changes");
+        Command::new(git_program)
+            .arg("commit")
+            .arg("-m")
+            .arg("\"Update profile stack\"")
+            .output()
+            .expect("Failed to commit staged changes");
+        Command::new(git_program)
+            .arg("push")
+            .output()
+            .expect("Failed to push committed changes");
     } else {
         warn!("No changes to README.md")
     }
