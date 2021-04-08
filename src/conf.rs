@@ -92,7 +92,7 @@ mod tests {
             technology_emoji: ' ',
             project_emoji: ' ',
         })?;
-        remove_dir_all::remove_dir_all(tmp_dir)?;
+        fs::remove_dir_all(tmp_dir)?;
 
         assert_eq!(
             file_conf,
