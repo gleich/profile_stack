@@ -29,6 +29,17 @@ args = [
     "."
 ]
 
+[tasks.build-docker-platform]
+command = "docker"
+args = [
+    "build",
+    "-f",
+    "docker/platform.Dockerfile",
+    "-t",
+    "mattgleich/profile_stack:platform",
+    "."
+]
+
 [tasks.build-docker-dev]
 command = "docker"
 args = [
@@ -54,7 +65,7 @@ args = ["test"]
 # Lint #
 ########
 [tasks.lint]
-dependencies = ["lint-rust", "lint-dockerfiles"]
+dependencies = ["lint-rust", "lint-dockerfiles", "lint-docker-platform"]
 
 [tasks.lint-rust]
 command = "cargo"
@@ -66,6 +77,10 @@ dependencies = ["lint-docker-prod", "lint-docker-dev"]
 [tasks.lint-docker-prod]
 command = "hadolint"
 args = ["docker/prod.Dockerfile"]
+
+[tasks.lint-docker-platform]
+command = "hadolint"
+args = ["docker/platform.Dockerfile"]
 
 [tasks.lint-doocker-dev]
 command = "hadolint"
