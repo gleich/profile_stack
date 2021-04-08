@@ -1,0 +1,15 @@
+name: deploy
+
+on: push
+
+jobs:
+  caprover:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Matt-Gleich --password-stdin
+          docker build -f docker/platform.Dockerfile -t ghcr.io/matt-gleich/api:platform .
+          docker push ghcr.io/matt-gleich/api:platform
