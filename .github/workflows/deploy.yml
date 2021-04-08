@@ -3,7 +3,7 @@ name: deploy
 on: push
 
 jobs:
-  caprover:
+  packages:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
