@@ -28,7 +28,7 @@ RUN cargo make build-rust-prod
 # hadolint ignore=DL3006,DL3007
 FROM debian:stable-slim
 WORKDIR /
-COPY --from=builder /usr/src/app/target/release/profile_stack .
+COPY --from=builder /usr/src/app/target/release/profile_stack /usr/local/bin
 
 # Install needed deps
 # hadolint ignore=DL3008
