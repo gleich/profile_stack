@@ -1,4 +1,4 @@
-use std::io::{Read, Write};
+use std::io::Write;
 use std::process::Command;
 use std::{env, fs};
 
@@ -24,19 +24,16 @@ fn main() {
     info!("Generated table");
 
     // Inserting table into README
-    let mut readme_file =
-        File::open(&readme::FILE_NAME).expect("Failed to create README.md file struct");
-    let mut readme_content = String::new();
-    readme_file
-        .read_to_string(&mut readme_content)
+    let readme_content = fs::read_to_string(readme::FILE_NAME)
         .expect(&format!("Failed to read from {}", readme::FILE_NAME));
-
     let patched_content = readme::insert_table(&readme_content, &table)
         .expect("Failed to insert table to README data");
 
     // Writing the changes to the README
     if readme_content != patched_content {
         // Writing changes
+        let mut readme_file =
+            File::create(&readme::FILE_NAME).expect("Failed to create README.md file struct");
         readme_file
             .write_all(patched_content.as_bytes())
             .expect(&format!("Failed to write changes to {}", readme::FILE_NAME));
