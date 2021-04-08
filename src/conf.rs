@@ -33,10 +33,13 @@ pub struct Project {
     pub wip: bool,
 }
 
+fn default_color() -> String { String::from("#FFFFFF") }
 #[derive(PartialEq, Deserialize, Debug)]
 pub struct Technology {
     pub name: String,
     pub logo: String,
+    #[serde(default = "default_color")]
+    pub logo_color: String,
     pub url: String,
     pub color: String,
     pub projects: Vec<Project>,
@@ -67,14 +70,15 @@ mod tests {
             b"- name: Golang
   logo: go
   url: https://golang.org/
-  color: 7FD6EA
+  logo_color: \"#201020\"
+  color: \"#7FD6EA\"
   projects:
     - url: https://github.com/Matt-Gleich/fgh
 
 - name: Python
   logo: python
   url: https://www.python.org/
-  color: 3C78A9
+  color: \"#3C78A9\"
   projects:
     - url: https://github.com/Matt-Gleich/profile_stack
     - url: https://github.com/Matt-Gleich/test
@@ -95,9 +99,10 @@ mod tests {
             vec![
                 Technology {
                     name: String::from("Golang"),
+                    logo_color: String::from("#201020"),
                     logo: String::from("go"),
                     url: String::from("https://golang.org/"),
-                    color: String::from("7FD6EA"),
+                    color: String::from("#7FD6EA"),
                     projects: vec![Project {
                         url: String::from("https://github.com/Matt-Gleich/fgh"),
                         wip: false
@@ -106,8 +111,9 @@ mod tests {
                 Technology {
                     name: String::from("Python"),
                     logo: String::from("python"),
+                    logo_color: String::from("#FFFFFF"),
                     url: String::from("https://www.python.org/"),
-                    color: String::from("3C78A9"),
+                    color: String::from("#3C78A9"),
                     projects: vec![
                         Project {
                             url: String::from("https://github.com/Matt-Gleich/profile_stack"),
