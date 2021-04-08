@@ -1,6 +1,6 @@
-use std::fs;
 use std::io::{Read, Write};
 use std::process::Command;
+use std::{env, fs};
 
 use fs::File;
 use tracing::{info, warn};
@@ -10,6 +10,8 @@ mod readme;
 
 fn main() {
     tracing_subscriber::fmt::init();
+
+    env::set_current_dir("/github/workspace/").expect("Failed to change dir to repo location");
 
     // Getting configuration
     let env_var_conf = conf::env_vars().expect("Failed to get env var config");
