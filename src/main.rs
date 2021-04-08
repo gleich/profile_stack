@@ -73,6 +73,8 @@ fn main() {
             .arg("push")
             .output()
             .expect("Failed to push committed changes");
+
+        info!("Committed changes! Have a good day :)")
     } else {
         warn!("No changes to README.md")
     }
