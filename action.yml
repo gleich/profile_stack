@@ -1,0 +1,25 @@
+name: 'profile_stack'
+description: "🚀 Display your tech stack on your GitHub profile's README"
+branding:
+  icon: 'user'
+  color: 'green'
+runs:
+  using: 'docker'
+  image: 'docker/prod.Dockerfile'
+inputs:
+  path:
+    required: false
+    default: 'stack.yml'
+    description: 'File path for the config file'
+  badges:
+    required: false
+    default: true
+    description: 'Badges or plain text in the table'
+  technology_emoji:
+    required: false
+    default: '💻'
+    description: 'The emoji for the technology column'
+  project_emoji:
+    required: false
+    default: '🚀'
+    description: 'The emoji for the projects column'
