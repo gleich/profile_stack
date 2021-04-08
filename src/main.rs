@@ -44,8 +44,8 @@ fn main() {
         Command::new(git_program)
             .arg("config")
             .arg("--global")
-            .arg("user.name")
-            .arg("\"action&github.com\"")
+            .arg("user.email")
+            .arg("\"action@github.com\"")
             .output()
             .expect("Failed to set commit email");
         Command::new(git_program)
