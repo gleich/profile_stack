@@ -11,5 +11,5 @@ jobs:
           fetch-depth: 0
       - run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Matt-Gleich --password-stdin
-          docker build -f docker/platform.Dockerfile -t ghcr.io/matt-gleich/api:platform .
-          docker push ghcr.io/matt-gleich/api:platform
+          docker build -f docker/platform.Dockerfile -t ghcr.io/matt-gleich/profile_stack:platform .
+          docker push ghcr.io/matt-gleich/profile_stack:platform

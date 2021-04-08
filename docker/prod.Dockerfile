@@ -1,4 +1,4 @@
-FROM ghcr.io/matt-gleich/api:platform
+FROM ghcr.io/matt-gleich/profile_stack:platform
 
 ENV RUST_LOG info
 ENV RUST_BACKTRACE 1
