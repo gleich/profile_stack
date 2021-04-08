@@ -2,6 +2,8 @@ use crate::conf;
 
 use anyhow::bail;
 
+pub const FILE_NAME: &'static str = "README.md";
+
 pub fn gen_table(
     env_conf: &conf::Env,
     file_conf: &Vec<conf::Technology>,
@@ -10,7 +12,7 @@ pub fn gen_table(
 
     // Add header
     lines.push(format!(
-        "\n| {} **Technology** | {} **Projects** |",
+        "| {} **Technology** | {} **Projects** |",
         &env_conf.technology_emoji, &env_conf.project_emoji
     ));
     lines.push(String::from("| - | - |"));
@@ -61,13 +63,55 @@ pub fn gen_table(
     Ok(lines.join("\n"))
 }
 
+const TABLE_START_MSG: &'static str = "<!-- START OF PROFILE STACK, DO NOT REMOVE -->";
+const TABLE_STOP_MSG: &'static str = "<!-- END OF PROFILE STACK, DO NOT REMOVE -->";
+
+pub fn insert_table(readme: &str, table: &str) -> Result<String, anyhow::Error> {
+    let mut new_lines: Vec<&str> = readme.lines().collect();
+
+    // Finding start and stop headers
+    let mut found = false;
+    let mut start = 0;
+    let mut stop = 0;
+    for (i, line) in readme.lines().enumerate() {
+        match line {
+            TABLE_START_MSG => {
+                found = true;
+                start = i + 1;
+            }
+            TABLE_STOP_MSG => stop = i,
+            _ => continue,
+        }
+    }
+
+    // Replacing (if found) or inserting table at the end (if not found)
+    if found {
+        for _ in start..stop {
+            new_lines.remove(start);
+        }
+        for (i, line) in table.lines().enumerate() {
+            new_lines.insert(start + i, line);
+        }
+    } else {
+        new_lines.push(TABLE_START_MSG);
+        for line in table.lines() {
+            new_lines.push(line);
+        }
+        new_lines.push(TABLE_STOP_MSG);
+    }
+
+    Ok(new_lines.join("\n"))
+}
+
 #[cfg(test)]
 mod tests {
     use std::path::Path;
 
-    use conf::{Env, Project, Technology};
+    use crate::conf::{Env, Project, Technology};
 
     use super::*;
+
+    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | ![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | ![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) ![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) |";
 
     #[test]
     fn test_gen_table() -> Result<(), anyhow::Error> {
@@ -110,7 +154,48 @@ mod tests {
                     }
                 ]
             )?,
-            "\n| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | ![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | ![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) ![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) |"
+            TEST_TABLE
+        );
+
+        Ok(())
+    }
+
+    #[test]
+    fn test_insert_table() -> Result<(), anyhow::Error> {
+        // No table
+        assert_eq!(
+            insert_table("# Hello World!", TEST_TABLE)?,
+            format!(
+                "# Hello World!\n{}\n{}\n{}",
+                TABLE_START_MSG, TEST_TABLE, TABLE_STOP_MSG
+            )
+        );
+
+        // With same table
+        assert_eq!(
+            insert_table(
+                &format!(
+                    "# Hello World!\n{}\n{}\n{}",
+                    TABLE_START_MSG, TEST_TABLE, TABLE_STOP_MSG
+                ),
+                TEST_TABLE
+            )?,
+            format!(
+                "# Hello World!\n{}\n{}\n{}",
+                TABLE_START_MSG, TEST_TABLE, TABLE_STOP_MSG
+            )
+        );
+
+        // With different table
+        assert_eq!(
+            insert_table(
+                &format!(
+                    "{}\n{}\n| Testing | Testing |\n{}",
+                    TABLE_START_MSG, TEST_TABLE, TABLE_STOP_MSG
+                ),
+                TEST_TABLE
+            )?,
+            format!("{}\n{}\n{}", TABLE_START_MSG, TEST_TABLE, TABLE_STOP_MSG)
         );
 
         Ok(())

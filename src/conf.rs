@@ -19,7 +19,7 @@ fn get_env_var(name: &str, default: &str) -> Result<String, anyhow::Error> {
 
 pub fn env_vars() -> Result<Env, anyhow::Error> {
     Ok(Env {
-        path: Path::new(get_env_var("path", "stack.yml")?.as_str()).to_owned(),
+        path: Path::new(&get_env_var("path", "stack.yml")?).to_owned(),
         badges: get_env_var("badges", "true")?.parse()?,
         technology_emoji: get_env_var("technology_emoji", "💻")?.parse()?,
         project_emoji: get_env_var("project_emoji", "🚀")?.parse()?,
