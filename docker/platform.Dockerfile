@@ -33,6 +33,6 @@ COPY --from=builder /usr/src/app/target/release/profile_stack /usr/local/bin
 # Install needed deps
 # hadolint ignore=DL3008
 RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends libpq5 ca-certificates libssl-dev \
+    && apt-get install -y --no-install-recommends libpq5 ca-certificates libssl-dev git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
