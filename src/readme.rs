@@ -35,7 +35,7 @@ pub fn gen_table(
 
             // Add badge/url
             if env_conf.badges {
-                projects.push(format!("![{}](https://img.shields.io/static/v1?label=&message={}&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)", repo_name, message));
+                projects.push(format!("[![{}](https://img.shields.io/static/v1?label=&message={}&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]({})", repo_name, message,project.url));
             } else {
                 projects.push(format!("[{}]({})", repo_name, message));
             }
@@ -111,7 +111,7 @@ mod tests {
 
     use super::*;
 
-    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | ![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | ![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) ![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605) |";
+    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | [![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/fgh) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | [![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/profile_stack) [![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/test) |";
 
     #[test]
     fn test_gen_table() -> Result<(), anyhow::Error> {
