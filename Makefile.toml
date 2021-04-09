@@ -1,0 +1,87 @@
+#########
+# Build #
+#########
+[tasks.build]
+dependencies = ["build-rust", "build-docker"]
+
+[tasks.build-rust]
+dependencies = ["build-rust-prod", "build-rust-dev"]
+
+[tasks.build-rust-prod]
+command = "cargo"
+args = ["build", "--release"]
+
+[tasks.build-rust-dev]
+command = "cargo"
+args = ["build"]
+
+[tasks.build-docker]
+dependencies = ["build-docker-prod", "build-docker-dev"]
+
+[tasks.build-docker-prod]
+command = "docker"
+args = [
+    "build",
+    "-f",
+    "docker/prod.Dockerfile",
+    "-t",
+    "mattgleich/profile_stack:latest",
+    "."
+]
+
+[tasks.build-docker-platform]
+command = "docker"
+args = [
+    "build",
+    "-f",
+    "docker/platform.Dockerfile",
+    "-t",
+    "mattgleich/profile_stack:platform",
+    "."
+]
+
+[tasks.build-docker-dev]
+command = "docker"
+args = [
+    "build",
+    "-f",
+    "docker/dev.Dockerfile",
+    "-t",
+    "mattgleich/profile_stack:dev",
+    "."
+]
+
+########
+# Test #
+########
+[tasks.test]
+dependencies = ["test-rust"]
+
+[tasks.test-rust]
+command = "cargo"
+args = ["test"]
+
+########
+# Lint #
+########
+[tasks.lint]
+dependencies = ["lint-rust", "lint-dockerfiles", "lint-docker-platform"]
+
+[tasks.lint-rust]
+command = "cargo"
+args = ["fmt", "--all", "--", "--check"]
+
+[tasks.lint-docker]
+dependencies = ["lint-docker-prod", "lint-docker-dev"]
+
+[tasks.lint-docker-prod]
+command = "hadolint"
+args = ["docker/prod.Dockerfile"]
+
+[tasks.lint-docker-platform]
+command = "hadolint"
+args = ["docker/platform.Dockerfile"]
+
+[tasks.lint-doocker-dev]
+command = "hadolint"
+args = ["docker/dev.Dockerfile"]

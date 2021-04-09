@@ -5,7 +5,7 @@ branding:
   color: 'green'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'docker/prod.Dockerfile'
 inputs:
   path:
     required: false

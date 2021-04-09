@@ -4,22 +4,72 @@ on:
   - push
   - pull_request
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
-  docker:
+  rust:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build Image
-        run: docker build .
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            rust:
+              - '**.rs'
+              - 'Makefile.toml'
+              - 'Cargo.lock'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.rust == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.rust == 'true'
+        run: cargo make build-rust
+  docker-prod:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            docker:
+              - '**/prod.Dockerfile'
+              - 'Makefile.toml'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.docker == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.docker == 'true'
+        run: cargo make build-docker-prod
+  docker-platform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            docker:
+              - '**/platform.Dockerfile'
+              - 'Makefile.toml'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.docker == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.docker == 'true'
+        run: cargo make build-docker-prod
   docker-dev:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build Image
-        run: docker build . -f dev.Dockerfile
-  platform:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build Image
-        run: docker build . -f platform.Dockerfile
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            docker:
+              - '**/dev.Dockerfile'
+              - 'Makefile.toml'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.docker == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.docker == 'true'
+        run: cargo make build-docker-dev

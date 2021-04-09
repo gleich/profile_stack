@@ -4,26 +4,24 @@ on:
   - push
   - pull_request
 
+env:
+  CARGO_TERM_COLOR: always
+
 jobs:
-  pytest:
+  rust:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-python@v1
+      - uses: dorny/paths-filter@v2
+        id: changes
         with:
-          python-version: '3.8'
-      - uses: dschep/install-poetry-action@v1.3
-      - name: Install dependencies
-        run: poetry install
-      - name: pytest
-        run: |
-          cd tests
-          pytest -vv
-  docker:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Build docker image
-        run: docker build . -f dev.Dockerfile -t mattgleich/profile_stack_dev
-      - name: Running docker image
-        run: docker run mattgleich/profile_stack_dev
+          filters: |
+            rust:
+              - '**.rs'
+              - 'Makefile.toml'
+              - 'Cargo.lock'
+              - '.github/workflows/**'
+      - if: steps.changes.outputs.rust == 'true'
+        uses: davidB/rust-cargo-make@v1
+      - if: steps.changes.outputs.rust == 'true'
+        run: cargo make test-rust
