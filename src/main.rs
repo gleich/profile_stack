@@ -45,14 +45,14 @@ fn main() {
             .arg("config")
             .arg("--global")
             .arg("user.email")
-            .arg("\"action@github.com\"")
+            .arg("action@github.com")
             .output()
             .expect("Failed to set commit email");
         Command::new(git_program)
             .arg("config")
             .arg("--global")
             .arg("user.name")
-            .arg("\"Publishing Bot\"")
+            .arg("Publishing Bot")
             .output()
             .expect("Failed to set commit email");
         Command::new(git_program)
@@ -63,7 +63,7 @@ fn main() {
         Command::new(git_program)
             .arg("commit")
             .arg("-m")
-            .arg("\"Update profile stack\"")
+            .arg("Update profile stack")
             .output()
             .expect("Failed to commit staged changes");
         Command::new(git_program)
