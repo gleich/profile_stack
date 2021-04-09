@@ -22,7 +22,8 @@ jobs:
               - 'Makefile.toml'
               - 'Cargo.lock'
               - '.github/workflows/**'
-      - run: |
+      - if: steps.changes.outputs.code == 'true'
+        run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Matt-Gleich --password-stdin
           docker build -f docker/platform.Dockerfile -t ghcr.io/matt-gleich/profile_stack:platform .
           docker push ghcr.io/matt-gleich/profile_stack:platform
