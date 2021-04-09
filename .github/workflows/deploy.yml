@@ -12,6 +12,16 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+      - uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            code:
+              - '**.rs'
+              - '**.Dockerfile'
+              - 'Makefile.toml'
+              - 'Cargo.lock'
+              - '.github/workflows/**'
       - run: |
           echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u Matt-Gleich --password-stdin
           docker build -f docker/platform.Dockerfile -t ghcr.io/matt-gleich/profile_stack:platform .
