@@ -15,8 +15,6 @@ replace:
 files:
   - path: .gitignore
     source: https://github.com/Matt-Gleich/rust_template/blob/main/.gitignore
-  - path: Makefile.toml
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/Makefile.toml
   # Documentation
   - path: CONTRIBUTING.md
     source: https://github.com/Matt-Gleich/rust_template/blob/main/CONTRIBUTING.md
