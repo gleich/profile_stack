@@ -28,6 +28,15 @@ v2.0.0 of profile_stack is a 100% rewrite in rust. Because it is written in rust
     - url: https://github.com/Matt-Gleich/gh_fsync
 ```
 
+### Difference
+
+```diff
+-   - https://github.com/Matt-Gleich/fgh
++   - url: https://github.com/Matt-Gleich/fgh
+-   - https://github.com/Matt-Gleich/gh_fsync
++   - url: https://github.com/Matt-Gleich/gh_fsync
+```
+
 ## `logoColor` is now `logo_color`
 
 ### Before
@@ -54,4 +63,11 @@ v2.0.0 of profile_stack is a 100% rewrite in rust. Because it is written in rust
   projects:
     - url: https://github.com/Matt-Gleich/fgh
     - url: https://github.com/Matt-Gleich/gh_fsync
+```
+
+### Difference
+
+```diff
+- logoColor: '#000000'
++ logo_color: '#000000'
 ```
