@@ -1,4 +1,4 @@
-<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich"]:end -->
+<!-- DO NOT REMOVE - contributor_list:data:start:["Matt-Gleich", "cjdenio"]:end -->
 
 # profile_stack ![GitHub release (latest by date)](https://img.shields.io/github/v/release/Matt-Gleich/profile_stack)
 
@@ -129,6 +129,8 @@ We would love to have you contribute! Please read the [contributing guide](CONTR
 
 
 - **[@Matt-Gleich](https://github.com/Matt-Gleich)**
+
+- **[@cjdenio](https://github.com/cjdenio)**
 
 <!-- DO NOT REMOVE - contributor_list:end -->
 <!-- prettier-ignore-end -->
