@@ -54,7 +54,7 @@ fn main() {
             .arg("user.name")
             .arg("Publishing Bot")
             .output()
-            .expect("Failed to set commit email");
+            .expect("Failed to set commit name");
         Command::new(git_program)
             .arg("add")
             .arg(readme::FILE_NAME)
