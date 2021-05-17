@@ -14,7 +14,7 @@ RUN rustup toolchain install nightly && \
     rustup default nightly
 
 # Install cargo-make
-ENV CARGO_MAKE_VERSION 0.32.16
+ENV CARGO_MAKE_VERSION 0.33.0
 ENV CARGO_MAKE_TMP_DIR /tmp/setup-rust-cargo-make
 RUN mkdir ${CARGO_MAKE_TMP_DIR} && \
     wget -qO ${CARGO_MAKE_TMP_DIR}/cargo-make.zip https://github.com/sagiegurari/cargo-make/releases/download/${CARGO_MAKE_VERSION}/cargo-make-v${CARGO_MAKE_VERSION}-x86_64-unknown-linux-musl.zip && \
