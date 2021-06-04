@@ -5,7 +5,7 @@ replace:
   - before: project_description
     after: 🚀 Display your tech stack on your GitHub profile's README
   - before: github_username
-    after: Matt-Gleich
+    after: gleich
   - before: project_author_email
     after: email@mattglei.ch
   - before: docker_username
@@ -14,23 +14,23 @@ replace:
     after: Matthew Gleich
 files:
   - path: .gitignore
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/.gitignore
+    source: https://github.com/gleich/rust_template/blob/main/.gitignore
   # Documentation
   - path: CONTRIBUTING.md
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/CONTRIBUTING.md
+    source: https://github.com/gleich/rust_template/blob/main/CONTRIBUTING.md
   - path: LICENSE
-    source: https://github.com/Matt-Gleich/Matt-Gleich/blob/master/standard_documents/licenses/MPL-2.0.txt
+    source: https://github.com/gleich/gleich/blob/master/standard_documents/licenses/MPL-2.0.txt
   - path: .github/ISSUE_TEMPLATE/bug.md
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/.github/ISSUE_TEMPLATE/bug.md
+    source: https://github.com/gleich/rust_template/blob/main/.github/ISSUE_TEMPLATE/bug.md
   - path: .github/ISSUE_TEMPLATE/feature.md
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/.github/ISSUE_TEMPLATE/feature.md
+    source: https://github.com/gleich/rust_template/blob/main/.github/ISSUE_TEMPLATE/feature.md
   - path: .github/PULL_REQUEST_TEMPLATE.md
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/.github/PULL_REQUEST_TEMPLATE.md
+    source: https://github.com/gleich/rust_template/blob/main/.github/PULL_REQUEST_TEMPLATE.md
   # Dockerfiles
   - path: docker/dev.Dockerfile
-    source: https://github.com/Matt-Gleich/rust_template/blob/main/docker/dev.Dockerfile
+    source: https://github.com/gleich/rust_template/blob/main/docker/dev.Dockerfile
   # GitHub Action Workflows
   - path: .github/workflows/contributors.yml
-    source: https://github.com/Matt-Gleich/Matt-Gleich/blob/master/standard_documents/workflows/contributors.yml
+    source: https://github.com/gleich/gleich/blob/master/standard_documents/workflows/contributors.yml
   - path: .github/workflows/fsync.yml
-    source: https://github.com/Matt-Gleich/Matt-Gleich/blob/master/standard_documents/workflows/fsync.yml
+    source: https://github.com/gleich/gleich/blob/master/standard_documents/workflows/fsync.yml

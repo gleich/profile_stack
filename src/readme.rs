@@ -111,7 +111,7 @@ mod tests {
 
     use super::*;
 
-    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | [![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/fgh) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | [![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/profile_stack) [![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/Matt-Gleich/test) |";
+    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | [![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/fgh) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | [![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/profile_stack) [![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/test) |";
 
     #[test]
     fn test_gen_table() -> Result<(), anyhow::Error> {
@@ -131,7 +131,7 @@ mod tests {
                         url: String::from("https://golang.org/"),
                         color: String::from("#7FD6EA"),
                         projects: vec![Project {
-                            url: String::from("https://github.com/Matt-Gleich/fgh"),
+                            url: String::from("https://github.com/gleich/fgh"),
                             wip: false
                         },]
                     },
@@ -143,11 +143,11 @@ mod tests {
                         color: String::from("#3C78A9"),
                         projects: vec![
                             Project {
-                                url: String::from("https://github.com/Matt-Gleich/profile_stack"),
+                                url: String::from("https://github.com/gleich/profile_stack"),
                                 wip: false
                             },
                             Project {
-                                url: String::from("https://github.com/Matt-Gleich/test"),
+                                url: String::from("https://github.com/gleich/test"),
                                 wip: true
                             }
                         ]

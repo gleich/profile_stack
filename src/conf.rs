@@ -73,15 +73,15 @@ mod tests {
   logo_color: \"#201020\"
   color: \"#7FD6EA\"
   projects:
-    - url: https://github.com/Matt-Gleich/fgh
+    - url: https://github.com/gleich/fgh
 
 - name: Python
   logo: python
   url: https://www.python.org/
   color: \"#3C78A9\"
   projects:
-    - url: https://github.com/Matt-Gleich/profile_stack
-    - url: https://github.com/Matt-Gleich/test
+    - url: https://github.com/gleich/profile_stack
+    - url: https://github.com/gleich/test
       wip: true",
         )?;
 
@@ -104,7 +104,7 @@ mod tests {
                     url: String::from("https://golang.org/"),
                     color: String::from("#7FD6EA"),
                     projects: vec![Project {
-                        url: String::from("https://github.com/Matt-Gleich/fgh"),
+                        url: String::from("https://github.com/gleich/fgh"),
                         wip: false
                     },]
                 },
@@ -116,11 +116,11 @@ mod tests {
                     color: String::from("#3C78A9"),
                     projects: vec![
                         Project {
-                            url: String::from("https://github.com/Matt-Gleich/profile_stack"),
+                            url: String::from("https://github.com/gleich/profile_stack"),
                             wip: false
                         },
                         Project {
-                            url: String::from("https://github.com/Matt-Gleich/test"),
+                            url: String::from("https://github.com/gleich/test"),
                             wip: true
                         }
                     ]

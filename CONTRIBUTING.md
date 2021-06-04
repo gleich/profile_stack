@@ -30,7 +30,7 @@ profile_stack only uses two linters: [hadolint](https://github.com/hadolint/hado
 
 ## 🔄 File Syncing
 
-profile_stack uses a GitHub action called [gh_fsync](https://github.com/Matt-Gleich/gh_fsync) to automatically sync certain files from other repositories. The configuration for gh_fsync is stored in [fsync.yml](fsync.yml). This all means that if you update a file in this repository before removing it from the configuration then gh_fsync will reset it back. If you are looking to change a file for profile_stack that is listed in the configuration please remove it from the configuration or update the source file.
+profile_stack uses a GitHub action called [gh_fsync](https://github.com/gleich/gh_fsync) to automatically sync certain files from other repositories. The configuration for gh_fsync is stored in [fsync.yml](fsync.yml). This all means that if you update a file in this repository before removing it from the configuration then gh_fsync will reset it back. If you are looking to change a file for profile_stack that is listed in the configuration please remove it from the configuration or update the source file.
 
 ---
 

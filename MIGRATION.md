@@ -12,8 +12,8 @@ v2.0.0 of profile_stack is a 100% rewrite in rust. Because it is written in rust
   url: https://golang.org/
   color: '#7FD6EA'
   projects:
-    - https://github.com/Matt-Gleich/fgh
-    - https://github.com/Matt-Gleich/gh_fsync
+    - https://github.com/gleich/fgh
+    - https://github.com/gleich/gh_fsync
 ```
 
 ### After
@@ -24,17 +24,17 @@ v2.0.0 of profile_stack is a 100% rewrite in rust. Because it is written in rust
   url: https://golang.org/
   color: '#7FD6EA'
   projects:
-    - url: https://github.com/Matt-Gleich/fgh
-    - url: https://github.com/Matt-Gleich/gh_fsync
+    - url: https://github.com/gleich/fgh
+    - url: https://github.com/gleich/gh_fsync
 ```
 
 ### Difference
 
 ```diff
--   - https://github.com/Matt-Gleich/fgh
-+   - url: https://github.com/Matt-Gleich/fgh
--   - https://github.com/Matt-Gleich/gh_fsync
-+   - url: https://github.com/Matt-Gleich/gh_fsync
+-   - https://github.com/gleich/fgh
++   - url: https://github.com/gleich/fgh
+-   - https://github.com/gleich/gh_fsync
++   - url: https://github.com/gleich/gh_fsync
 ```
 
 ## `logoColor` is now `logo_color`
@@ -48,8 +48,8 @@ v2.0.0 of profile_stack is a 100% rewrite in rust. Because it is written in rust
   url: https://golang.org/
   color: '#7FD6EA'
   projects:
-    - url: https://github.com/Matt-Gleich/fgh
-    - url: https://github.com/Matt-Gleich/gh_fsync
+    - url: https://github.com/gleich/fgh
+    - url: https://github.com/gleich/gh_fsync
 ```
 
 ### After
@@ -61,8 +61,8 @@ v2.0.0 of profile_stack is a 100% rewrite in rust. Because it is written in rust
   url: https://golang.org/
   color: '#7FD6EA'
   projects:
-    - url: https://github.com/Matt-Gleich/fgh
-    - url: https://github.com/Matt-Gleich/gh_fsync
+    - url: https://github.com/gleich/fgh
+    - url: https://github.com/gleich/gh_fsync
 ```
 
 ### Difference
