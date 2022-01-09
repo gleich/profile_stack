@@ -1,6 +1,7 @@
 use crate::conf;
 
 use anyhow::bail;
+use percent_encoding::{utf8_percent_encode, AsciiSet, CONTROLS};
 
 pub const FILE_NAME: &'static str = "README.md";
 
@@ -35,22 +36,23 @@ pub fn gen_table(
 
             // Add badge/url
             if env_conf.badges {
-                projects.push(format!("[![{}](https://img.shields.io/static/v1?label=&message={}&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]({})", repo_name, message,project.url));
+                projects.push(format!("[![{}](https://img.shields.io/static/v1?label=&message={}&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]({})", repo_name, message, project.url));
             } else {
                 projects.push(format!("[{}]({})", repo_name, message));
             }
         }
         let joined_projects = projects.join(" ");
 
+        const FRAGMENT: &AsciiSet = &CONTROLS.add(b' ').add(b'"').add(b'<').add(b'>').add(b'`');
         if env_conf.badges {
             lines.push(format!("| [![{}](https://img.shields.io/static/v1?label=&message={}&color={}&logo={}&logoColor={})]({}) | {} |",
             tech.name,
-            tech.name,
+            utf8_percent_encode(&tech.name, FRAGMENT),
             tech.color.replace("#", ""),
-            tech.logo,
+            utf8_percent_encode(&tech.logo, FRAGMENT),
             tech.logo_color.replace("#", ""),
             tech.url,
-            joined_projects
+            joined_projects,
         ))
         } else {
             lines.push(format!(
@@ -111,7 +113,7 @@ mod tests {
 
     use super::*;
 
-    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Golang](https://img.shields.io/static/v1?label=&message=Golang&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | [![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/fgh) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | [![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/profile_stack) [![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/test) |";
+    const TEST_TABLE: &str = "| 💻 **Technology** | 🚀 **Projects** |\n| - | - |\n| [![Go Language](https://img.shields.io/static/v1?label=&message=Go%20Language&color=7FD6EA&logo=go&logoColor=201020)](https://golang.org/) | [![fgh](https://img.shields.io/static/v1?label=&message=fgh&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/fgh) |\n| [![Python](https://img.shields.io/static/v1?label=&message=Python&color=3C78A9&logo=python&logoColor=FFFFFF)](https://www.python.org/) | [![profile_stack](https://img.shields.io/static/v1?label=&message=profile_stack&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/profile_stack) [![test](https://img.shields.io/static/v1?label=&message=test%20(WIP)&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)](https://github.com/gleich/test) |";
 
     #[test]
     fn test_gen_table() -> Result<(), anyhow::Error> {
@@ -125,7 +127,7 @@ mod tests {
                 },
                 &vec![
                     Technology {
-                        name: String::from("Golang"),
+                        name: String::from("Go Language"),
                         logo_color: String::from("#201020"),
                         logo: String::from("go"),
                         url: String::from("https://golang.org/"),
