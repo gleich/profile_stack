@@ -18,6 +18,8 @@ pub fn gen_table(
     ));
     lines.push(String::from("| - | - |"));
 
+    const FRAGMENT: &AsciiSet = &CONTROLS.add(b' ').add(b'"').add(b'<').add(b'>').add(b'`');
+
     for tech in file_conf.iter() {
         let mut projects = Vec::new();
         for project in tech.projects.iter() {
@@ -36,14 +38,13 @@ pub fn gen_table(
 
             // Add badge/url
             if env_conf.badges {
-                projects.push(format!("[![{}](https://img.shields.io/static/v1?label=&message={}&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]({})", repo_name, message, project.url));
+                projects.push(format!("[![{}](https://img.shields.io/static/v1?label=&message={}&color=000605&logo=github&logoColor=FFFFFF&labelColor=000605)]({})", repo_name, utf8_percent_encode(&message, FRAGMENT), project.url));
             } else {
                 projects.push(format!("[{}]({})", repo_name, message));
             }
         }
         let joined_projects = projects.join(" ");
 
-        const FRAGMENT: &AsciiSet = &CONTROLS.add(b' ').add(b'"').add(b'<').add(b'>').add(b'`');
         if env_conf.badges {
             lines.push(format!("| [![{}](https://img.shields.io/static/v1?label=&message={}&color={}&logo={}&logoColor={})]({}) | {} |",
             tech.name,
