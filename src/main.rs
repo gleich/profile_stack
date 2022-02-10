@@ -1,17 +1,18 @@
 use std::io::Write;
-use std::process::Command;
 use std::{env, fs};
 
 use fs::File;
 use tracing::{info, warn};
 
 mod conf;
+mod git;
 mod readme;
 
 fn main() {
     tracing_subscriber::fmt::init();
 
-    env::set_current_dir("/github/workspace/").expect("Failed to change dir to repo location");
+    env::set_current_dir("/github/workspace/")
+        .expect("Failed to change directory to repo location");
 
     // Getting configuration
     let env_var_conf = conf::env_vars().expect("Failed to get env var config");
@@ -20,7 +21,9 @@ fn main() {
     info!("Got configuration inputs");
 
     // Generating table
-    let table = readme::gen_table(&env_var_conf, &file_conf).expect("Failed to generate table");
+    let repo_owner = git::repo_owner().expect("Failed gto get repo owner");
+    let table = readme::gen_table(&env_var_conf, &file_conf, &repo_owner)
+        .expect("Failed to generate table");
     info!("Generated table");
 
     // Inserting table into README
@@ -39,37 +42,7 @@ fn main() {
             .expect(&format!("Failed to write changes to {}", readme::FILE_NAME));
         info!("Wrote changes to {}", readme::FILE_NAME);
 
-        // Committing changes
-        let git_program = "git";
-        Command::new(git_program)
-            .arg("config")
-            .arg("--global")
-            .arg("user.email")
-            .arg("action@github.com")
-            .output()
-            .expect("Failed to set commit email");
-        Command::new(git_program)
-            .arg("config")
-            .arg("--global")
-            .arg("user.name")
-            .arg("Publishing Bot")
-            .output()
-            .expect("Failed to set commit name");
-        Command::new(git_program)
-            .arg("add")
-            .arg(readme::FILE_NAME)
-            .output()
-            .expect("Failed to stage changes");
-        Command::new(git_program)
-            .arg("commit")
-            .arg("-m")
-            .arg("Update profile stack")
-            .output()
-            .expect("Failed to commit staged changes");
-        Command::new(git_program)
-            .arg("push")
-            .output()
-            .expect("Failed to push committed changes");
+        git::commit_and_push().expect("Failed to commit and push changes");
 
         info!("Committed changes! Have a good day :)")
     } else {
