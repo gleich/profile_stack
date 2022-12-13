@@ -6,10 +6,11 @@ use serde::Deserialize;
 
 #[derive(PartialEq, Debug)]
 pub struct Env {
-    pub path: PathBuf,
     pub badges: bool,
     pub technology_emoji: char,
     pub project_emoji: char,
+    pub output_file: PathBuf,
+    pub config_filename: PathBuf,
 }
 
 fn get_env_var(name: &str, default: &str) -> Result<String, anyhow::Error> {
@@ -19,10 +20,11 @@ fn get_env_var(name: &str, default: &str) -> Result<String, anyhow::Error> {
 
 pub fn env_vars() -> Result<Env, anyhow::Error> {
     Ok(Env {
-        path: Path::new(&get_env_var("path", "stack.yml")?).to_owned(),
         badges: get_env_var("badges", "true")?.parse()?,
         technology_emoji: get_env_var("technology_emoji", "💻")?.parse()?,
         project_emoji: get_env_var("project_emoji", "🚀")?.parse()?,
+        config_filename: Path::new(&get_env_var("path", "stack.yml")?).to_owned(),
+        output_file: Path::new(&get_env_var("output_file", "README.md")?).to_owned(),
     })
 }
 
@@ -46,7 +48,7 @@ pub struct Technology {
 }
 
 pub fn config_file(env_conf: &Env) -> Result<Vec<Technology>, anyhow::Error> {
-    let content = fs::read_to_string(&env_conf.path)?;
+    let content = fs::read_to_string(&env_conf.config_filename)?;
     let deserialized: Vec<Technology> =
         serde_yaml::from_str(&content).context("Deserialize failed")?;
     Ok(deserialized)
@@ -64,8 +66,9 @@ mod tests {
         // Creating a test file
         let tmp_dir = "tests";
         fs::create_dir(tmp_dir)?;
-        let fpath = "tests/tmp.yml";
-        let mut file = File::create(fpath)?;
+        let config_path = "tests/tmp.yml";
+        let readme_path = "content/STACK.md";
+        let mut file = File::create(config_path)?;
         file.write_all(
             b"- name: Golang
   logo: go
@@ -87,10 +90,11 @@ mod tests {
 
         // Getting config data
         let file_conf = config_file(&Env {
-            path: Path::new(fpath).to_owned(),
+            config_filename: Path::new(config_path).to_owned(),
             badges: true,
             technology_emoji: ' ',
             project_emoji: ' ',
+            output_file: Path::new(readme_path).to_owned(),
         })?;
         fs::remove_dir_all(tmp_dir)?;
 
@@ -136,10 +140,11 @@ mod tests {
         assert_eq!(
             env_vars()?,
             Env {
-                path: Path::new("stack.yml").to_owned(),
+                config_filename: Path::new("stack.yml").to_owned(),
                 badges: true,
                 technology_emoji: '💻',
                 project_emoji: '🚀',
+                output_file: Path::new("README.md").to_owned()
             }
         );
         Ok(())

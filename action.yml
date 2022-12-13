@@ -23,3 +23,7 @@ inputs:
     required: false
     default: '🚀'
     description: 'The emoji for the projects column'
+  output_file:
+    required: false
+    default: README.md
+    description: 'File to output to'
