@@ -3,8 +3,6 @@ use crate::conf;
 use anyhow::bail;
 use percent_encoding::{utf8_percent_encode, AsciiSet, CONTROLS};
 
-pub const FILE_NAME: &'static str = "README.md";
-
 pub fn gen_table(
     env_conf: &conf::Env,
     file_conf: &Vec<conf::Technology>,
@@ -128,10 +126,11 @@ mod tests {
         assert_eq!(
             gen_table(
                 &Env {
-                    path: Path::new("stack.yml").to_owned(),
+                    config_filename: Path::new("stack.yml").to_owned(),
                     badges: true,
                     technology_emoji: '💻',
                     project_emoji: '🚀',
+                    output_file: Path::new("README.md").to_owned()
                 },
                 &vec![
                     Technology {

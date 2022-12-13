@@ -2,11 +2,11 @@ use std::process::{Command, Stdio};
 
 use anyhow::{Context, Result};
 
-use crate::readme;
+use crate::conf::Env;
 
 const BINARY: &str = "git";
 
-pub fn commit_and_push() -> Result<()> {
+pub fn commit_and_push(env_var_conf: &Env) -> Result<()> {
     Command::new(BINARY)
         .arg("config")
         .arg("--global")
@@ -23,7 +23,7 @@ pub fn commit_and_push() -> Result<()> {
         .context("Failed to set commit name")?;
     Command::new(BINARY)
         .arg("add")
-        .arg(readme::FILE_NAME)
+        .arg(&env_var_conf.output_file)
         .output()
         .context("Failed to stage changes")?;
     Command::new(BINARY)

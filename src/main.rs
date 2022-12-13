@@ -27,22 +27,27 @@ fn main() {
     info!("Generated table");
 
     // Inserting table into README
-    let readme_content = fs::read_to_string(readme::FILE_NAME)
-        .expect(&format!("Failed to read from {}", readme::FILE_NAME));
+    let readme_content = fs::read_to_string(&env_var_conf.output_file).expect(&format!(
+        "Failed to read from {}",
+        &env_var_conf.output_file.display()
+    ));
     let patched_content = readme::insert_table(&readme_content, &table)
         .expect("Failed to insert table to README data");
 
     // Writing the changes to the README
     if readme_content != patched_content {
         // Writing changes
-        let mut readme_file =
-            File::create(&readme::FILE_NAME).expect("Failed to create README.md file struct");
+        let mut readme_file = File::create(&&env_var_conf.output_file)
+            .expect("Failed to create README.md file struct");
         readme_file
             .write_all(patched_content.as_bytes())
-            .expect(&format!("Failed to write changes to {}", readme::FILE_NAME));
-        info!("Wrote changes to {}", readme::FILE_NAME);
+            .expect(&format!(
+                "Failed to write changes to {}",
+                &env_var_conf.output_file.display()
+            ));
+        info!("Wrote changes to {}", &env_var_conf.output_file.display());
 
-        git::commit_and_push().expect("Failed to commit and push changes");
+        git::commit_and_push(&env_var_conf).expect("Failed to commit and push changes");
 
         info!("Committed changes! Have a good day :)")
     } else {
